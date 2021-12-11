@@ -1,15 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect} from "react";
 import { Link} from "react-router-dom";
-import * as tasksShelfApi from '../../services/dbApi'
-//import Person from './Person';
-
+import * as personsOperations from '../../redux/persons/persons-operations'
+import {useDispatch, useSelector} from 'react-redux'
+import * as personsSelectors from '../../redux/persons/persons-selectors'
 export default function Persons(){
     
-    const [persons,setPersons]=useState(null);
+    const dispatch=useDispatch();
+    const persons=useSelector(personsSelectors.getPersons)
 
     useEffect(()=>{
-        tasksShelfApi.fetchPersons().then(setPersons);
-    },[]);
+        dispatch(personsOperations.fetchPersons())
+    },[dispatch]);
     
     return (<>
     {persons && (

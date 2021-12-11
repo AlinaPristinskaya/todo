@@ -1,8 +1,23 @@
 
-const persons=[]
+import { createReducer ,combineReducers} from "@reduxjs/toolkit";
+import * as  actions from './persons-actions';
 
-const personsReducer=(state=persons,action)=>{
-    console.log(action)
-    return state
-};
-export default personsReducer
+
+const item=createReducer([],{
+    [actions.fetchPersonSuccess]:(_,action)=>action.payload,
+});
+const isLoading=createReducer(false,{
+    [actions.fetchPersonRequest]:()=>true,
+    [actions.fetchPersonSuccess]:()=>false,
+    [actions.fetchPersonError]:()=>false,
+})
+const error=createReducer(null,{
+    [actions.fetchPersonError]:(_,action)=>action.payload,
+    [actions.fetchPersonRequest]:()=>null,
+})
+
+export default combineReducers({
+    item,
+    isLoading,
+    error
+})
