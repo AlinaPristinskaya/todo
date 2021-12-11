@@ -5,8 +5,8 @@ import * as tasksApi from '../../services/dbApi';
 export const fetchTasks=()=>async dispatch=>{
     dispatch(tasksActions.fetchTaskRequest());
     try{
-        const {data}=await tasksApi.fetchTasks();
-        dispatch(tasksActions.fetchTaskSuccess(data));
+        const tasks=await tasksApi.fetchTasks();
+        dispatch(tasksActions.fetchTaskSuccess(tasks));
 
     }catch(error){
         dispatch(tasksActions.fetchTaskError(error))
