@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 
 
+
  const fetchTasks=()=>async dispatch=>{
     dispatch(tasksActions.fetchTaskRequest());
     try{
@@ -12,33 +13,24 @@ import { v4 as uuidv4 } from 'uuid';
 
     }catch(error){
         dispatch(tasksActions.fetchTaskError(error))
-
-            }
-}
+       }}
 
 const addTask = ({title,description}) =>async dispatch => {
     const task = {
-      id: uuidv4(),
-      title:title,
-      description:description
+      id:uuidv4(),
+      title,
+      description
     };
     console.log(task)
     dispatch(tasksActions.addTaskRequest());
   
          try {
-        const data = await tasksApi.fetchAddTask(task);
-        console.log(data)
-    
-        dispatch(tasksActions.addTaskSuccess(data));
+       await tasksApi.fetchAddTask(task);
+       console.log( dispatch(tasksActions.addTaskSuccess(task)));
       } catch (error) {
         dispatch(tasksActions.addTaskError(error));
       } }
 
-     
-
-
-    
- 
   const operations={fetchTasks,addTask}
 
 export default operations;

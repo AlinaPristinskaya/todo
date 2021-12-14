@@ -2,17 +2,16 @@
 import {useState} from 'react';
 import { connect } from 'react-redux';
 import  operations from '../../redux/tasks/tasks-operations';
+import * as personsSelectors from '../../redux/persons/persons-selectors'
+import Select from 'react-select';
+import personsOperations from '../../redux/persons/persons-operations'
 
-import { v4 as uuidv4 } from 'uuid';
-
-
-function FormAddTask({onSubmit}){
+function FormAddTask({onSubmit,persons,personsfetch}){
   const [title,setTitle]=useState('');
   const [description,setDescrintion]=useState('');
-  //const [personId,setPersonId]=useState('');
+  const [personId,setPersonId]=useState('');
 
-  const titleInputId=uuidv4();
-  const descriptionInputId=uuidv4();
+  
 
   const handelChangeTitle=(event)=>{
     const {value}=event.currentTarget;  
@@ -29,33 +28,49 @@ function FormAddTask({onSubmit}){
   
   const handelSubmit=e=>{
     e.preventDefault();
-    const data={title,description}
-    if(data){
-      onSubmit({title,description})
-    }
-    
-
-  
-    
-   // reset()
-
-    }
+    onSubmit({title,description,personId})
+    reset()
+  }
   
 
-  /* const reset=()=>{
+   const reset=()=>{
       setTitle('');
       setDescrintion('');
-      
-  } */
-
+      setPersonId('')
+  } 
+  const allPerson=()=>{
+    personsfetch()
+    console.log(persons)
+    persons.map(person =>
+      person.id
+    );}
+    
   
+
+  const validatePerson = e => {
+    if (e.label === 'Выберите сотрудника') {
+      return;
+    }
+    setPersonId(e.label);
+    
+  }; 
+/*   const sortPerson = arr => {
+    let optionsPerson = [];
+    arr.forEach(({ id, fio }) =>
+      optionsPerson.push({
+        value: id,
+        label: fio,
+      }),
+    );
+    return optionsPerson;
+  }; */ 
   return (
     <>
     <div>
     <h3>Добавить задачу</h3>
       <form onSubmit={handelSubmit}>
       <div >
-       <div> <label htmlFor={titleInputId}> Название задачи </label></div>
+       <div> <label > Название задачи </label></div>
         <input 
              onChange={handelChangeTitle}
               value={title}
@@ -67,7 +82,7 @@ function FormAddTask({onSubmit}){
         /></div>
         <div>
 
-       <label htmlFor={descriptionInputId}> Описание задачи </label>
+       <label > Описание задачи </label>
        <input 
              onChange={handelChangeDescription}
               value={description}
@@ -77,21 +92,24 @@ function FormAddTask({onSubmit}){
               title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
               required
         /></div>
-       {/*   <select
-            defaultValue={'ФИО Сотрудника'}
-            name="SelectedPersone"
+         <Select
+            defaultValue={'Выбрать сотрудника'}
+            name="Selected"
+            onChange={validatePerson}
+            options={allPerson()}
             
-            options={persons.map(person=>person)}
-            
-          /> */}
+          />
        <button type="submit">Добавить</button>
-    </form></div>
+     </form></div>
 
 </>
 );}
-
+  const mapStateToProps=state=>({
+    persons:personsSelectors.getPersons
+  })
   const mapDispatchToProps = dispatch => ({
     onSubmit:({title,description})=>dispatch(operations.addTask({title,description})),
+    personsfetch:dispatch(personsOperations.fetchPersons())
   });
  
-  export default connect(null, mapDispatchToProps)(FormAddTask); 
+  export default connect(mapStateToProps, mapDispatchToProps)(FormAddTask); 

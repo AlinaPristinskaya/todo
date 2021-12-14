@@ -13,31 +13,15 @@
   ],
   "tasks": [
     {
-      "id": 56,
       "title": "Отчет о продажах",
-      "description": "dfgdjgddkjsgh fdsghkksjhg"
+      "description": "dfgdjgddkjsgh fdsghkksjhg",
+      "id": 1
     },
     {
-      "id": 58,
-      "title": "Отчет о закупках",
-      "description": "dfgdjgddkjsgh fdsghkksjhg"
-    },
-    {
-      "id": 59,
-      "title": "Квартальный отет",
-      "description": "dfgdjgddkjsgh fdsghkksjhg"
-    },
-    {
-      "id": 60
-    },
-    {
-      "id": 61
-    },
-    {
-      "id": 62
-    },
-    {
-      "id": 63
+      "title": "Отчет о продажах",
+      "description": "dfgdjgddkjsgh fdsghkksjhg",
+      "id": 2
     }
+    
   ]
 }

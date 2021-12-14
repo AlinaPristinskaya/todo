@@ -2,7 +2,7 @@ import * as personsActions from './persons-actions';
 import * as personsApi from '../../services/dbApi';
 
 
-export const fetchPersons=()=>async dispatch=>{
+ const fetchPersons=()=>async dispatch=>{
     dispatch(personsActions.fetchPersonRequest());
     try{
         const tasks=await personsApi.fetchPersons();
@@ -13,3 +13,5 @@ export const fetchPersons=()=>async dispatch=>{
 
     }
 }
+
+export default fetchPersons

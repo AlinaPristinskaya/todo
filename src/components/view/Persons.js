@@ -1,12 +1,12 @@
 import { useEffect} from "react";
 import { Link} from "react-router-dom";
-import * as personsOperations from '../../redux/persons/persons-operations'
+import personsOperations from '../../redux/persons/persons-operations'
 import {useDispatch, useSelector} from 'react-redux'
-import * as personsSelectors from '../../redux/persons/persons-selectors'
+import * as personSelectors from '../../redux/persons/persons-selectors'
 export default function Persons(){
     
     const dispatch=useDispatch();
-    const persons=useSelector(personsSelectors.getPersons)
+    const persons=useSelector(personSelectors.getPersons)
 
     useEffect(()=>{
         dispatch(personsOperations.fetchPersons())

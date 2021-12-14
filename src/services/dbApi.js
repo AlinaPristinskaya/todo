@@ -18,5 +18,15 @@ export function fetchTaskById(taskId){
     return fetchWithErrorHandling(`${BASE_URL}/tasks/${taskId}?_expand=personId`)
 }
 export function fetchAddTask(data){
-    return fetchWithErrorHandling(`${BASE_URL}/tasks`,{method:'POST',body:data})
-}
+    console.log(data)
+    fetch(`${BASE_URL}/tasks`,{method:'POST',data}).then(function(response) {
+        if (!response.ok) {
+            return Promise.reject(new Error(
+                'Response failed: ' + response.status + ' (' + response.statusText + ')'
+            ));
+        }
+        return})}
+
+    
+
+
