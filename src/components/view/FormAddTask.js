@@ -28,7 +28,7 @@ function FormAddTask({onSubmit}){
   
   
   const handelSubmit=e=>{
-    //e.preventDefault();
+    e.preventDefault();
     const data={title,description}
     if(data){
       onSubmit({title,description})
