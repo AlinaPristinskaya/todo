@@ -1,15 +1,18 @@
 
 import {useState} from 'react';
-//import { connect } from 'react-redux';
-//import tasksActions from '../../redux/tasks/tasks-actions';
-//const persons=['Иванов','Петров','Сидоров']
+import { connect } from 'react-redux';
+import  operations from '../../redux/tasks/tasks-operations';
 
-function FormAddPerson(){
+import { v4 as uuidv4 } from 'uuid';
+
+
+function FormAddTask({onSubmit}){
   const [title,setTitle]=useState('');
   const [description,setDescrintion]=useState('');
   //const [personId,setPersonId]=useState('');
 
-  
+  const titleInputId=uuidv4();
+  const descriptionInputId=uuidv4();
 
   const handelChangeTitle=(event)=>{
     const {value}=event.currentTarget;  
@@ -18,24 +21,23 @@ function FormAddPerson(){
   }
 
   const handelChangeDescription=(e)=>{
-    console.log(e);
     const {value}=e.currentTarget;  
     setDescrintion(value);
 
   }
- /*  const handelChangePerson=(e)={
-    console.log(e);
-    const {value}=e.currentTarget;  
-    setPerson(value);
-  } */
+  
   
   const handelSubmit=e=>{
-    e.preventDefault();
-   
+    //e.preventDefault();
+    const data={title,description}
+    if(data){
+      onSubmit({title,description})
+    }
+    
 
   
     
-    //reset()
+   // reset()
 
     }
   
@@ -43,7 +45,7 @@ function FormAddPerson(){
   /* const reset=()=>{
       setTitle('');
       setDescrintion('');
-      setPersonId('')
+      
   } */
 
   
@@ -53,7 +55,7 @@ function FormAddPerson(){
     <h3>Добавить задачу</h3>
       <form onSubmit={handelSubmit}>
       <div >
-       <div> <label> Название задачи </label></div>
+       <div> <label htmlFor={titleInputId}> Название задачи </label></div>
         <input 
              onChange={handelChangeTitle}
               value={title}
@@ -65,7 +67,7 @@ function FormAddPerson(){
         /></div>
         <div>
 
-       <label > Описание задачи </label>
+       <label htmlFor={descriptionInputId}> Описание задачи </label>
        <input 
              onChange={handelChangeDescription}
               value={description}
@@ -88,10 +90,8 @@ function FormAddPerson(){
 </>
 );}
 
-
-/* const mapDispatchToProps=dispatch=>({
-    onSubmit:data=> dispatch(tasksActions.addTask(data))
-})
-
-  export default connect(null,mapDispatchToProps)(FormAddPerson); */
-  export default FormAddPerson;
+  const mapDispatchToProps = dispatch => ({
+    onSubmit:({title,description})=>dispatch(operations.addTask({title,description})),
+  });
+ 
+  export default connect(null, mapDispatchToProps)(FormAddTask); 

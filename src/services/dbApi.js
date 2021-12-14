@@ -17,3 +17,6 @@ export function fetchPersonById(personId){
 export function fetchTaskById(taskId){
     return fetchWithErrorHandling(`${BASE_URL}/tasks/${taskId}?_expand=personId`)
 }
+export function fetchAddTask(data){
+    return fetchWithErrorHandling(`${BASE_URL}/tasks`,{method:'POST',body:data})
+}

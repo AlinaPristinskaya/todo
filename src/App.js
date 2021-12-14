@@ -9,8 +9,6 @@ import Task from './components/view/Task';
 import Persons from './components/view/Persons';
 import Person from './components/view/Person';
 
-
-
 function App() {
   return (
     <Container>
@@ -27,7 +25,8 @@ function App() {
       </Routes>
       
     </Container>
-  );
-}
+  )}
 
-export default App;
+  
+  export default (App);
+
