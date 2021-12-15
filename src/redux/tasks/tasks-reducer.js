@@ -1,5 +1,5 @@
 import { createReducer ,combineReducers} from "@reduxjs/toolkit";
-import * as  actions from './tasks-actions';
+import actions from './tasks-actions';
 
 
 const entities=createReducer([],{

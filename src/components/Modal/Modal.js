@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { createPortal } from 'react-dom';
 import './Modal.scss';
-import FormAddPerson from '../view/FormAddTask'
+//import FormAddTask from '../view/FormAddTask'
+import FormAddPerson from '../view/FormAddPerson'
 const modalRoot = document.querySelector('#root-modal');
 
 export default class Modal extends Component {

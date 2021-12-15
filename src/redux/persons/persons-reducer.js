@@ -1,6 +1,6 @@
 
 import { createReducer ,combineReducers} from "@reduxjs/toolkit";
-import * as  actions from './persons-actions';
+import actions from './persons-actions';
 
 
 const item=createReducer([],{

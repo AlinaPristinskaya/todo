@@ -2,70 +2,56 @@
 import {useState} from 'react';
 import { connect } from 'react-redux';
 import  operations from '../../redux/tasks/tasks-operations';
-import selectors from '../../redux/tasks/tasks-selectors'
-//import Select from 'react-select';
+//import selectors from '../../redux/tasks/tasks-selectors';
+import {useSelector} from 'react-redux';
+import selectors from '../../redux/persons/persons-selectors';
 //import personsOperations from '../../redux/persons/persons-operations'
 
-function FormAddTask({onSubmit,persons,personsfetch}){
+function FormAddTask({onSubmit}){
   const [title,setTitle]=useState('');
   const [description,setDescrintion]=useState('');
   const [personId,setPersonId]=useState('');
 
-  
+  const persons=useSelector(selectors.getPersons) 
 
   const handelChangeTitle=(event)=>{
     const {value}=event.currentTarget;  
     setTitle(value);
   
   }
-
   const handelChangeDescription=(e)=>{
     const {value}=e.currentTarget;  
     setDescrintion(value);
 
   }
-  
+  const handelChangePerson=(e)=>{
+    const {value}=e.currentTarget;
+    const personId=persons.find(person=>person.fio===value)
+    console.log(personId.id)
+    setPersonId(personId.id)       
+  }
+    
+
   
   const handelSubmit=e=>{
     e.preventDefault();
     onSubmit({title,description,personId})
     reset()
   }
-  
 
    const reset=()=>{
       setTitle('');
       setDescrintion('');
       setPersonId('')
-  } 
-/*   const allPerson=()=>{
-    personsfetch()
-    console.log(persons)
-    persons.map(person =>
-      person.id
-    );} */
+  }     
+   
+  const personName=persons.map(person=>person.fio)
+  const personsArr = ['Выберите сотрудника', ...personName];
+   
+  
+  return (<>
     
   
-
-  /* const validatePerson = e => {
-    if (e.label === 'Выберите сотрудника') {
-      return;
-    }
-    setPersonId(e.label);
-    
-  }; */ 
-/*   const sortPerson = arr => {
-    let optionsPerson = [];
-    arr.forEach(({ id, fio }) =>
-      optionsPerson.push({
-        value: id,
-        label: fio,
-      }),
-    );
-    return optionsPerson;
-  }; */ 
-  return (
-    <>
     <div>
     <h3>Добавить задачу</h3>
       <form onSubmit={handelSubmit}>
@@ -92,24 +78,24 @@ function FormAddTask({onSubmit,persons,personsfetch}){
               title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
               required
         /></div>
-        {/* {persons && (<ul>{persons.map(person=><li>{person.fio}</li>)}</ul>)} */}
-        {/*  <Select
+         {persons &&   <select
             defaultValue={'Выбрать сотрудника'}
             name="Selected"
-            onChange={validatePerson}
-            options={allPerson()}
-            
-          /> */}
+            onChange={handelChangePerson}>{personsArr.map(person=>(      
+    
+              <option selected={person}>{person}</option>))
+           
+           } </select>
+               
+          }
        <button type="submit">Добавить</button>
      </form></div>
 
 </>
 );}
-  const mapStateToProps=state=>({
-    persons:selectors.getPersons
-  })
+  
   const mapDispatchToProps = dispatch => ({
     onSubmit:({title,description})=>dispatch(operations.addTask({title,description})),
   });
  
-  export default connect(mapStateToProps, mapDispatchToProps)(FormAddTask); 
+  export default connect(null, mapDispatchToProps)(FormAddTask); 

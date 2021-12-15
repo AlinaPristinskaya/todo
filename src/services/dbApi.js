@@ -6,21 +6,6 @@ async function fetchWithErrorHandling(url='',config={}){
     :Promise.reject(new Error('Not found'));
 }
 
-/* async function fetchPost(url=''){
-    const response=await fetch(url,{
-        
-        method: 'post',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        }
-        });
-    return response.ok
-    ? await response.json()
-    :Promise.reject(new Error('Not found'));
-} */
-
-
 
 export function fetchPersons(){
     return fetchWithErrorHandling(`${BASE_URL}/persons`)
@@ -34,9 +19,11 @@ export function fetchPersonById(personId){
 export function fetchTaskById(taskId){
     return fetchWithErrorHandling(`${BASE_URL}/tasks/${taskId}?_expand=personId`)
 }
-/* export function fetchAddTask(data){
-    return fetchPost(`${BASE_URL}/tasks}/${data}`)} */
-
-    
+export function fetchAddTask(data){
+    return fetchWithErrorHandling(`${BASE_URL}/tasks/${data}`)
+}
+export function fetchAddPerson(data){
+    return fetchWithErrorHandling(`${BASE_URL}/tasks/${data}`)
+}    
 
 
