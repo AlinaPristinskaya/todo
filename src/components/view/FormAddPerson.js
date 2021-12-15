@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import { connect } from 'react-redux';
-import  operations from '../../redux/tasks/tasks-operations';
+import  operations from '../../redux/persons/persons-operations';
 
 
 function FormAddPerson({onSubmit}){

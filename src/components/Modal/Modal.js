@@ -1,42 +1,35 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import './Modal.scss';
 //import FormAddTask from '../view/FormAddTask'
-import FormAddPerson from '../view/FormAddPerson'
+//import FormAddPerson from '../view/FormAddPerson'
 const modalRoot = document.querySelector('#root-modal');
 
-export default class Modal extends Component {
-  componentDidMount() {
-    window.addEventListener('keydown', this.handleKeyDown);
-  }
+export default function Modal({ onClose, children }) {
+  useEffect(() => {
+      const handleKeyDown = e => {
+          if (e.code === 'Escape') {
+              onClose();
+          }
+      };
 
-  componentWillUnmount() {
-    window.removeEventListener('keydown', this.handleKeyDown);
-  }
+      window.addEventListener('keydown', handleKeyDown);
 
-  handleKeyDown = e => {
-    if (e.code === 'Escape') {
-      this.props.onClose();
-    }
+      return () => {
+          window.removeEventListener('keydown', handleKeyDown);
+      };
+  }, [onClose]);
+
+  const handleBackdropClick = event => {
+      if (event.currentTarget === event.target) {
+          onClose();
+      }
   };
 
-  handleBackdropClick = event => {
-    // console.log('Кликнули в бекдроп');
-
-    // console.log('currentTarget: ', event.currentTarget);
-    // console.log('target: ', event.target);
-
-    if (event.currentTarget === event.target) {
-      this.props.onClose();
-    }
-  };
-
-  render() {
-    return createPortal(
-      <div  className="Modal__backdrop" onClick={this.handleBackdropClick}>
-        <div className="Modal__content" ><FormAddPerson onSave={this.toggleModal}/></div>
+  return createPortal(
+      <div className="Modal__backdrop" onClick={handleBackdropClick}>
+          <div className="Modal__content">{children}</div>
       </div>,
       modalRoot,
-    );
-  }
+  );
 }

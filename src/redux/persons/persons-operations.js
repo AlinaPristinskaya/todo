@@ -27,7 +27,16 @@ const addPerson= ({fio,email}) =>async dispatch => {
         .catch(error => dispatch(personsActions.addPersonError(error)));
     };
 
+    const deletePerson = PersonId => dispatch => {
+        dispatch(personsActions.deletePersonRequest());
+      
+        axios
+          .delete(`http://localhost:3002/persons/${PersonId}`)
+          .then(() => dispatch(personsActions.deletePersonSuccess(PersonId)))
+          .catch(error => dispatch(personsActions.deletePersonError(error)));
+      };
+    
 
 
-const operations={fetchPersons,addPerson}
+const operations={fetchPersons,addPerson,deletePerson}
 export default operations

@@ -12,18 +12,18 @@ import Person from './components/view/Person';
 function App() {
   return (
     <Container>
-      <AppBar />
+      
      
       <Routes>
         
       <Route path="/" exact element={<HomeView />} />
-      <Route path="/persons/:personId" exact  element={<Person/>} />
-      <Route path="/persons/" exact  element={<Persons/>} />
+      <Route path="/persons/:personId" element={<Person/>} />
+      <Route path="/persons" exact  element={<Persons/>} />
       <Route path="/tasks/:taskId" element={<Task/>} />
       <Route path="/tasks" exact  element={<Tasks/>} />
       
       </Routes>
-      
+      <AppBar />
     </Container>
   )}
 

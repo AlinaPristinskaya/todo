@@ -6,6 +6,7 @@ import selectors from '../../redux/persons/persons-selectors'
 import IconButton from '../IconButton/iconButton';
 import { ReactComponent as AddIcon } from '../../icons/add.svg';
 import Modal from '../Modal/Modal'
+import FormAddPerson from "./FormAddPerson";
 
 
 export default function Persons(){
@@ -26,15 +27,17 @@ export default function Persons(){
     },[dispatch]);
     
     return (<>
-    {persons && (<ul>{persons.map(person=><li><Link to={`/person/${person.id}`}>{person.fio}</Link></li>)}</ul>)}
+    {persons && (<ul>{persons.map(person=><li><Link to={`/persons/${person.id}`}>{person.fio}</Link></li>)}</ul>)}
     <hr/>
     <IconButton onClick={toggleModal} aria-label="Добавить todo">
     <AddIcon width="40" height="40" fill="#fff" />
   </IconButton>
   {showModal && (
           <Modal onClose={toggleModal}>
-           
+           <FormAddPerson/>
           </Modal>)}
+          
+          
 
    
     </>)

@@ -8,7 +8,14 @@ const fetchTaskError=createAction('tasks/fetchTaskError')
 const addTaskRequest = createAction('tasks/addTaskRequest');
 const addTaskSuccess = createAction('tasks/addTaskSuccess');
 const addTaskError = createAction('tasks/addTaskError');
-const action={fetchTaskRequest,fetchTaskSuccess,
-    fetchTaskError,addTaskRequest,addTaskSuccess,addTaskError
+
+const deleteTaskRequest = createAction('tasks/deleteTaskRequest');
+const deleteTaskSuccess = createAction('tasks/deleteTaskSuccess');
+const deleteTaskError = createAction('tasks/deleteTaskError');
+
+
+const action={fetchTaskRequest,fetchTaskSuccess,fetchTaskError,
+    addTaskRequest,addTaskSuccess,addTaskError,
+    deleteTaskRequest,deleteTaskSuccess,deleteTaskError
 }
 export default action

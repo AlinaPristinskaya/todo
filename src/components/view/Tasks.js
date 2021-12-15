@@ -2,7 +2,7 @@ import { useEffect,useState} from "react";
 import { Link} from "react-router-dom";
 import taskop from '../../redux/tasks/tasks-operations';
 import {useDispatch, useSelector} from 'react-redux'
-//import FormAddTask from "./FormAddTask.js";
+import FormAddTask from "./FormAddTask.js";
 import selectors from '../../redux/tasks/tasks-selectors'
 import IconButton from '../IconButton/iconButton';
 import { ReactComponent as AddIcon } from '../../icons/add.svg';
@@ -32,7 +32,7 @@ export default function Tasks(){
   </IconButton>
   {showModal && (
           <Modal onClose={toggleModal}>
-           
+           <FormAddTask/>
           </Modal>)}
     </>
     )

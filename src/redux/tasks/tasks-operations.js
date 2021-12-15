@@ -27,10 +27,17 @@ const addTask= ({title,description}) =>async dispatch => {
       .then(({ data }) => dispatch(tasksActions.addTaskSuccess(data)))
       .catch(error => dispatch(tasksActions.addTaskError(error)));
   };
+  const deleteTask = TaskId => dispatch => {
+    dispatch(tasksActions.deleteTaskRequest());
+  
+    axios
+      .delete(`http://localhost:3002/tasks/${TaskId}`)
+      .then(() => dispatch(tasksActions.deleteTaskSuccess(TaskId)))
+      .catch(error => dispatch(tasksActions.deleteTaskError(error)));
+  };
 
 
-
-const operations={fetchTasks,addTask}
+const operations={fetchTasks,addTask,deleteTask}
 export default operations
 
   

@@ -1,9 +1,10 @@
 import{useState,useEffect} from 'react';
+import { connect } from 'react-redux';
 import {useParams} from 'react-router-dom';
 import * as tasksShelfApi from '../../services/dbApi';
+import operations from '../../redux/persons/persons-operations';
 
-
-export default function Person(){
+function Person({onDeletePerson}){
     const {personId}=useParams();
     const[person,setPerson]=useState(null);
 
@@ -20,8 +21,15 @@ export default function Person(){
     </div>
     </>}
     <hr/>
-    <button>Удалить сотрудника</button>
-    <button>Изменить данные сотрудника</button>
+    <button type="button"  onClick={() => onDeletePerson(personId)}>
+      Удалить сотрудника
+    </button>
     </>)
 
 }
+
+const mapDispatchToProps = dispatch => ({
+    onDeletePerson:id=>dispatch(operations.deletePerson(id)),
+  });
+
+export default connect(null,mapDispatchToProps)(Person)  
