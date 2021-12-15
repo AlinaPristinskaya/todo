@@ -2,9 +2,9 @@
 import {useState} from 'react';
 import { connect } from 'react-redux';
 import  operations from '../../redux/tasks/tasks-operations';
-import * as personsSelectors from '../../redux/persons/persons-selectors'
-import Select from 'react-select';
-import personsOperations from '../../redux/persons/persons-operations'
+import selectors from '../../redux/tasks/tasks-selectors'
+//import Select from 'react-select';
+//import personsOperations from '../../redux/persons/persons-operations'
 
 function FormAddTask({onSubmit,persons,personsfetch}){
   const [title,setTitle]=useState('');
@@ -38,22 +38,22 @@ function FormAddTask({onSubmit,persons,personsfetch}){
       setDescrintion('');
       setPersonId('')
   } 
-  const allPerson=()=>{
+/*   const allPerson=()=>{
     personsfetch()
     console.log(persons)
     persons.map(person =>
       person.id
-    );}
+    );} */
     
   
 
-  const validatePerson = e => {
+  /* const validatePerson = e => {
     if (e.label === 'Выберите сотрудника') {
       return;
     }
     setPersonId(e.label);
     
-  }; 
+  }; */ 
 /*   const sortPerson = arr => {
     let optionsPerson = [];
     arr.forEach(({ id, fio }) =>
@@ -92,24 +92,24 @@ function FormAddTask({onSubmit,persons,personsfetch}){
               title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
               required
         /></div>
-         <Select
+        {/* {persons && (<ul>{persons.map(person=><li>{person.fio}</li>)}</ul>)} */}
+        {/*  <Select
             defaultValue={'Выбрать сотрудника'}
             name="Selected"
             onChange={validatePerson}
             options={allPerson()}
             
-          />
+          /> */}
        <button type="submit">Добавить</button>
      </form></div>
 
 </>
 );}
   const mapStateToProps=state=>({
-    persons:personsSelectors.getPersons
+    persons:selectors.getPersons
   })
   const mapDispatchToProps = dispatch => ({
     onSubmit:({title,description})=>dispatch(operations.addTask({title,description})),
-    personsfetch:dispatch(personsOperations.fetchPersons())
   });
  
   export default connect(mapStateToProps, mapDispatchToProps)(FormAddTask); 

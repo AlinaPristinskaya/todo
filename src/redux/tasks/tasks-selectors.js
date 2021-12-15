@@ -1,7 +1,7 @@
 const getTasks=state=>state.tasks.entities;
-const getPersons=state=>state.persons;
+//const getPersons=state=>state.persons;
 
-console.log(getPersons)
-const selectors={getTasks,getPersons}
+
+const selectors={getTasks}
 
 export default selectors;

@@ -13,5 +13,5 @@ import * as personsApi from '../../services/dbApi';
 
     }
 }
-
-export default fetchPersons
+const operations={fetchPersons}
+export default operations
