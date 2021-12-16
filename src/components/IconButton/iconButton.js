@@ -1,9 +1,9 @@
 import React from 'react';
 
 
-const IconButton = ({ children, onClick, ...allyProps }) => (
+const IconButton = ({ name, onClick, ...allyProps }) => (
   <button type="button" onClick={onClick} >
-    Добавить
+    {name}
   </button>
 );
 

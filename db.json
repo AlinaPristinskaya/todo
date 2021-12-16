@@ -1,51 +1,22 @@
 {
   "persons": [
     {
-      "id": 1,
-      "fio": "Дима Ковалев",
-      "email": "india@gfmdk.com"
+      "id": "fa6b3ded-6aed-4c04-b1e1-6c820e3c2848",
+      "fio": "ddddddd",
+      "email": "fdvdfgv@gmail.com"
     },
     {
-      "id": 2,
-      "fio": "Poma Ковалев",
-      "email": "india@gfmdk.com"
-    },
-    {
-      "id": "48dbcac3-6c15-46ad-afea-0b0dd61b8415",
-      "fio": "Миша Пупкин",
-      "email": "авпчвапа"
-    },
-    {
-      "id": "ba6d01eb-5d43-4a38-ae96-0d828e649989",
-      "fio": "Vasya",
-      "email": "jdkcbjkbchjck"
+      "id": "b5c128d0-bffd-4ac6-82d3-84717f8bfeba",
+      "fio": "Alina",
+      "email": "afcszdcv@fdvx.vd"
     }
   ],
   "tasks": [
     {
-      "title": "Отчет о продажах",
-      "description": "dfgdjgddkjsgh fdsghkksjhg",
-      "id": 1,
-      "personId": 2
-    },
-    {
-      "title": "Отчет о продажах",
-      "description": "dfgdjgddkjsgh fdsghkksjhg",
-      "id": 2,
-      "personId": 1
-    },
-    {
-      "id": 3,
-      "title": "Купи Слона",
-      "description": "Самого большого",
-      "personId": 2
-    },
-    {
-      "id": "ec09530c-9a33-467a-b168-c1dec1f86b1a",
-      "title": "Alina Молодец",
-      "description": "dfgd",
-      "personId": 1
+      "id": "17d61cf2-7333-4a27-9a32-509a66e50813",
+      "title": "xfvx",
+      "description": "xdvc",
+      "personId": "fa6b3ded-6aed-4c04-b1e1-6c820e3c2848"
     }
-    
   ]
 }

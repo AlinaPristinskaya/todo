@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import  operations from '../../redux/persons/persons-operations';
 
 
-function FormAddPerson({onSubmit}){
+function FormPerson({onSubmit,name,onSubmitEdit}){
   const [fio,setFio]=useState('');
   const [email,setEmail]=useState('');
   
@@ -13,7 +13,8 @@ function FormAddPerson({onSubmit}){
   
   }
   const handelEmail=(e)=>{
-    const {value}=e.currentTarget;  
+    const {value}=e.currentTarget;
+    validateEmail(value)  
     setEmail(value);
 
   }
@@ -29,12 +30,20 @@ function FormAddPerson({onSubmit}){
       setEmail('');
       
   }     
-   
+  function validateEmail(value) {
+    let error;
+    if (!value) {
+      error = 'Required';
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
+      error = 'Invalid email address';
+    }
+    return error;
+  }
   return (<>
     
   
     <div>
-    <h3>Добавить сотрудника</h3>
+    <h1>{name}</h1>
       <form onSubmit={handelSubmit}>
       <div >
        <div> <label >ФИО</label></div>
@@ -43,21 +52,19 @@ function FormAddPerson({onSubmit}){
               value={fio}
               type="text"
               name="name"
-              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-              title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
+              maxlength="255"
               required
+
         /></div>
         <div>
 
-       <label >Email</label>
+        <div> <label >Email</label></div>
        <input 
              onChange={handelEmail}
               value={email}
               type="text"
-              name="name"
-              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-              title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
-              required
+             pattern='^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$'
+             required
         /></div>
         
        <button type="submit">Добавить</button>
@@ -70,4 +77,4 @@ function FormAddPerson({onSubmit}){
     onSubmit:({fio,email})=>dispatch(operations.addPerson({fio,email})),
   });
  
-  export default connect(null, mapDispatchToProps)(FormAddPerson); 
+  export default connect(null, mapDispatchToProps)(FormPerson); 

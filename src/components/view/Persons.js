@@ -1,13 +1,12 @@
 import { useEffect,useState} from "react";
-//import { Link} from "react-router-dom";
+import { Link} from "react-router-dom";
 import personsOperations from '../../redux/persons/persons-operations'
 import {useDispatch, useSelector} from 'react-redux'
 import selectorsPerson from '../../redux/persons/persons-selectors'
 import selectorsTasks from '../../redux/tasks/tasks-selectors'
 import IconButton from '../IconButton/iconButton';
-import { ReactComponent as AddIcon } from '../../icons/add.svg';
 import Modal from '../Modal/Modal'
-import FormAddPerson from "./FormAddPerson";
+import FormPerson from "./FormPerson";
 import './Persons.scss';
 
 export default function Persons(){
@@ -44,7 +43,7 @@ export default function Persons(){
             <tbody className='tbody'>
               {persons.map(({fio,id,email}) => (
                 <tr key={id}>
-                  <td className='td'>{fio}</td>
+                  <td className='td'>{ <Link to={`/persons/${id}`}>{fio}</Link>}</td>
                   <td className='td'>{email}</td>
                   <td className='td'>{tasks?taskTitle(id):'tut zadachi'}</td>
                 </tr>
@@ -52,12 +51,11 @@ export default function Persons(){
             </tbody>
           </table></div>
     
-    <IconButton onClick={toggleModal}>
-    <AddIcon width="40" height="40" fill="#fff" />
-  </IconButton></div>
+    <IconButton onClick={toggleModal} name={'Добавить сотрудника'}/>
+    </div>
   {showModal && (
           <Modal onClose={toggleModal}>
-           <FormAddPerson/>
+           <FormPerson name={'Добавить сотрудника'}/>
           </Modal>)}
     </>)
 

@@ -1,12 +1,11 @@
 import { useEffect,useState} from "react";
-//import { Link} from "react-router-dom";
+import { Link} from "react-router-dom";
 import taskop from '../../redux/tasks/tasks-operations';
 import {useDispatch, useSelector} from 'react-redux'
-import FormAddTask from "./FormAddTask.js";
+import FormTask from "./FormTask.js";
 import selectors from '../../redux/tasks/tasks-selectors'
 import selectorss from '../../redux/persons/persons-selectors'
 import IconButton from '../IconButton/iconButton';
-import { ReactComponent as AddIcon } from '../../icons/add.svg';
 import Modal from '../Modal/Modal'
 import './Tasks.scss'
 
@@ -51,19 +50,19 @@ export default function Tasks(){
             <tbody>
               {tasks.map(({title,description,personId,id}) => (
                 <tr key={id}>
-                  <td className='td'>{title}</td>
+                  <td className='td'>{ <Link to={`/tasks/${id}`}>{title}</Link>}</td>
                   <td className='td'>{description}</td>
                   <td className='td'>{personFio(personId)}</td>
                 </tr>
               ))}
             </tbody>
           </table> </div>
-    <IconButton onClick={toggleModal} >
-    <AddIcon width="40" height="40" fill="#fff" />
-  </IconButton></div>
+    <IconButton onClick={toggleModal} name={'Добавить задачу'}/>
+    
+  </div>
   {showModal && (
           <Modal onClose={toggleModal}>
-           <FormAddTask/>
+           <FormTask name={'Добавить задачу'}/>
           </Modal>)}
     </>
     )

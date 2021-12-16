@@ -7,7 +7,7 @@ import {useSelector} from 'react-redux';
 import selectors from '../../redux/persons/persons-selectors';
 //import personsOperations from '../../redux/persons/persons-operations'
 
-function FormAddTask({onSubmit}){
+function FormTask({onSubmit,name,onSubmitEdit}){
   const [title,setTitle]=useState('');
   const [description,setDescrintion]=useState('');
   const [personId,setPersonId]=useState('');
@@ -53,7 +53,7 @@ function FormAddTask({onSubmit}){
     
   
     <div>
-    <h3>Добавить задачу</h3>
+      <h1>{name}</h1>
       <form onSubmit={handelSubmit}>
       <div >
        <div> <label > Название задачи </label></div>
@@ -62,23 +62,21 @@ function FormAddTask({onSubmit}){
               value={title}
               type="text"
               name="name"
-              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-              title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
+              maxlength="255"
               required
         /></div>
         <div>
 
-       <label > Описание задачи </label>
+      <div> <label > Описание задачи </label></div>
        <input 
              onChange={handelChangeDescription}
               value={description}
               type="text"
               name="name"
-              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-              title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
-              required
+              maxlength="255"
+                            
         /></div>
-         {persons &&   <select
+        <div> {persons &&   <select
             defaultValue={'Выбрать сотрудника'}
             name="Selected"
             onChange={handelChangePerson}>{personsArr.map(person=>(      
@@ -87,7 +85,7 @@ function FormAddTask({onSubmit}){
            
            } </select>
                
-          }
+          }</div>
        <button type="submit">Добавить</button>
      </form></div>
 
@@ -98,4 +96,4 @@ function FormAddTask({onSubmit}){
     onSubmit:({title,description,personId})=>dispatch(operations.addTask({title,description,personId})),
   });
  
-  export default connect(null, mapDispatchToProps)(FormAddTask); 
+  export default connect(null, mapDispatchToProps)(FormTask); 
