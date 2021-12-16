@@ -15,11 +15,12 @@ import axios from 'axios'
     }
 }
 
-const addTask= ({title,description}) =>async dispatch => {
+const addTask= ({title,description,personId}) =>async dispatch => {
   const task = {
     id: uuidv4(),
     title:title,
     description:description,
+    personId:personId,
   };
   dispatch(tasksActions.addTaskRequest());
   axios

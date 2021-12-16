@@ -95,7 +95,7 @@ function FormAddTask({onSubmit}){
 );}
   
   const mapDispatchToProps = dispatch => ({
-    onSubmit:({title,description})=>dispatch(operations.addTask({title,description})),
+    onSubmit:({title,description,personId})=>dispatch(operations.addTask({title,description,personId})),
   });
  
   export default connect(null, mapDispatchToProps)(FormAddTask); 

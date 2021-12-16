@@ -3,7 +3,7 @@ import React from 'react';
 
 const IconButton = ({ children, onClick, ...allyProps }) => (
   <button type="button" onClick={onClick} >
-    Кнопка
+    Добавить
   </button>
 );
 

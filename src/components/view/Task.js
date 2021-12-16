@@ -7,6 +7,7 @@ import operations from '../../redux/tasks/tasks-operations'
 function Task({onDeleteTask}){
     const {taskId}=useParams();
     const[task,setTask]=useState(null);
+    console.log(task)
 
     useEffect(()=>{
         tasksShelfApi.fetchTaskById(taskId).then(setTask)

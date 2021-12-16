@@ -6,66 +6,46 @@
       "email": "india@gfmdk.com"
     },
     {
-      "id": 3,
+      "id": 2,
       "fio": "Poma Ковалев",
       "email": "india@gfmdk.com"
-    },
-    {
-      "id": "e8351935-06e7-4c01-beb5-fcb5c01364e6",
-      "fio": "Федор Мельников",
-      "email": "рмпормор"
-    },
-    {
-      "id": "3e5d93fb-630a-4198-b30f-14faac7f7dad",
-      "fio": "fvkhg",
-      "email": "fgtkugfk"
     },
     {
       "id": "48dbcac3-6c15-46ad-afea-0b0dd61b8415",
       "fio": "Миша Пупкин",
       "email": "авпчвапа"
+    },
+    {
+      "id": "ba6d01eb-5d43-4a38-ae96-0d828e649989",
+      "fio": "Vasya",
+      "email": "jdkcbjkbchjck"
     }
   ],
   "tasks": [
     {
       "title": "Отчет о продажах",
       "description": "dfgdjgddkjsgh fdsghkksjhg",
-      "id": 1
+      "id": 1,
+      "personId": 2
     },
     {
       "title": "Отчет о продажах",
       "description": "dfgdjgddkjsgh fdsghkksjhg",
-      "id": 2154565821444
+      "id": 2,
+      "personId": 1
     },
     {
-      "id": "ffa56203-b7eb-4336-82f1-4747ee70252d",
+      "id": 3,
       "title": "Купи Слона",
-      "description": "Самого большого"
+      "description": "Самого большого",
+      "personId": 2
     },
     {
-      "id": "cfe6c86a-6028-487a-a58e-986e4d73b1e2",
-      "title": "Отремонтировать кран",
-      "description": "Который два года течет"
-    },
-    {
-      "id": "9f9226c8-b188-4e9e-a8f0-6ba97fa08797",
-      "title": "Alina",
-      "description": "jhvbjhvk"
-    },
-    {
-      "id": "bad34c64-0c89-4f88-b67e-ac5aa718d5c1",
-      "title": "Купи Слона",
-      "description": "авиапияыпа"
-    },
-    {
-      "id": "89f3aff7-6184-443b-9786-35d32ee0c27f",
-      "title": "апичспаичспм",
-      "description": "яаичсм"
-    },
-    {
-      "id": "29e6e94a-2be5-4cbc-a891-9bda085a6e27",
-      "title": "Построить дом",
-      "description": "Как можно скорее"
+      "id": "ec09530c-9a33-467a-b168-c1dec1f86b1a",
+      "title": "Alina Молодец",
+      "description": "dfgd",
+      "personId": 1
     }
+    
   ]
 }

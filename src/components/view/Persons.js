@@ -2,47 +2,51 @@ import { useEffect,useState} from "react";
 //import { Link} from "react-router-dom";
 import personsOperations from '../../redux/persons/persons-operations'
 import {useDispatch, useSelector} from 'react-redux'
-import selectors from '../../redux/persons/persons-selectors'
+import selectorsPerson from '../../redux/persons/persons-selectors'
+import selectorsTasks from '../../redux/tasks/tasks-selectors'
 import IconButton from '../IconButton/iconButton';
 import { ReactComponent as AddIcon } from '../../icons/add.svg';
 import Modal from '../Modal/Modal'
 import FormAddPerson from "./FormAddPerson";
-import s from './Persons.scss';
+import './Persons.scss';
 
 export default function Persons(){
+  const[showModal,setShowModal]=useState(false);
+  const dispatch=useDispatch();
+
+  const persons=useSelector(selectorsPerson.getPersons)
+  const tasks=useSelector(selectorsTasks.getTasks)
     
-    const dispatch=useDispatch();
-    const persons=useSelector(selectors.getPersons)
-    console.log(persons)
+  const taskTitle=(personId)=>{
+     const titles=tasks.filter(task=>task.personId===personId)
+     return titles.map(dd=>(<ul><li>{dd.title}</li></ul>))
 
-    const[showModal,setShowModal]=useState(false);
+   }
 
-  
-    const toggleModal = () => {
+  const toggleModal = () => {
       setShowModal(!showModal)
-    };
+  };
 
-    useEffect(()=>{
+  useEffect(()=>{
         dispatch(personsOperations.fetchPersons())
-    },[dispatch]);
+  },[dispatch]);
     
-    return (<>
-    
-    <div className={s.parents}><div className={s.div}>
-     <table className={s.table}>
-            <thead className={s.thead}>
+  return (<>    
+    <div ><div>
+     <table className='table'>
+            <thead className='thead'>
               <tr>
-                <th className={s.th}>Сотрудник</th>
-                <th className={s.th}>Email</th>
-                <th className={s.th}>Задачи</th>
+                <th className='th'>Сотрудник</th>
+                <th className='th'>Email</th>
+                <th className='th'>Задачи</th>
               </tr>
             </thead>
-            <tbody className={s.tbody}>
+            <tbody className='tbody'>
               {persons.map(({fio,id,email}) => (
                 <tr key={id}>
-                  <td className={s.td}>{fio}</td>
-                  <td className={s.td}>{email}</td>
-                  <td className={s.td}>{id}</td>
+                  <td className='td'>{fio}</td>
+                  <td className='td'>{email}</td>
+                  <td className='td'>{tasks?taskTitle(id):'tut zadachi'}</td>
                 </tr>
               ))}
             </tbody>
@@ -55,10 +59,6 @@ export default function Persons(){
           <Modal onClose={toggleModal}>
            <FormAddPerson/>
           </Modal>)}
-          
-          
-
-   
     </>)
 
 }

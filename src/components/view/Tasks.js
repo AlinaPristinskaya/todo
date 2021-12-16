@@ -4,48 +4,61 @@ import taskop from '../../redux/tasks/tasks-operations';
 import {useDispatch, useSelector} from 'react-redux'
 import FormAddTask from "./FormAddTask.js";
 import selectors from '../../redux/tasks/tasks-selectors'
+import selectorss from '../../redux/persons/persons-selectors'
 import IconButton from '../IconButton/iconButton';
 import { ReactComponent as AddIcon } from '../../icons/add.svg';
 import Modal from '../Modal/Modal'
-import s from './Tasks.scss'
+import './Tasks.scss'
 
 export default function Tasks(){
     const[showModal,setShowModal]=useState(false);
+    const dispatch=useDispatch();
+    useEffect(()=>{
+      dispatch(taskop.fetchTasks())
+   },[dispatch]);
 
   
     const toggleModal = () => {
       setShowModal(!showModal)
     };
-    const dispatch=useDispatch();
+    
     const tasks=useSelector(selectors.getTasks)
+    const persons=useSelector(selectorss.getPersons)
 
-    useEffect(()=>{
-        dispatch(taskop.fetchTasks())
-        
-        
-    },[dispatch]);
+    const personFio=(personId)=>{
+     const fio=persons.find(person=>person.id===personId)
+     if(fio){
+       return fio.fio
+     }
+     else return  'Исполнитель'
+
+     }
+     
+
+   
     return (
-         <><div className="parents">
-    {tasks && (
-    <table className={s.table}>
-            <thead className={s.thead}>
+         <><div >
+           <div >
+    
+    <table className='table'>
+            <thead className='thead'>
               <tr>
-                <th className={s.th}>Задача</th>
-                <th className={s.th}>Описание</th>
-                <th className={s.th}>Сотрудник</th>
+                <th className='th'>Задача</th>
+                <th className='th'>Описание</th>
+                <th className='th'>Сотрудник</th>
               </tr>
             </thead>
-            <tbody className={s.tbody}>
-              {tasks.map(({title,description,id}) => (
+            <tbody>
+              {tasks.map(({title,description,personId,id}) => (
                 <tr key={id}>
-                  <td className={s.td}>{title}</td>
-                  <td className={s.td}>{description}</td>
-                  <td className={s.td}>{id}</td>
+                  <td className='td'>{title}</td>
+                  <td className='td'>{description}</td>
+                  <td className='td'>{personFio(personId)}</td>
                 </tr>
               ))}
             </tbody>
-          </table> )}
-    <IconButton onClick={toggleModal} aria-label="Добавить todo">
+          </table> </div>
+    <IconButton onClick={toggleModal} >
     <AddIcon width="40" height="40" fill="#fff" />
   </IconButton></div>
   {showModal && (
