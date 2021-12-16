@@ -5,13 +5,13 @@ const Navigation=()=>(
     <nav>
         <NavLink exact to="/"  className="nav-link"
         activeClassName="active">
-            На главную
+      
         </NavLink>
 
 
         <NavLink to="/persons" className="nav-link"
         activeClassName="active">
-            Сотрудники
+          Сотрудники
         </NavLink>
 
         <NavLink to="/tasks" className="nav-link"

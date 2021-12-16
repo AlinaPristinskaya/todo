@@ -1,0 +1,148 @@
+$main-bg: #fff;
+$bg-color: #e7eaf2;
+$modal-bg: rgba(0, 0, 0, 0.25);
+
+//text colors
+$main-text: #000000;
+$secondary-text: #ffffff;
+
+//border colors
+$border-table: #dcdcdf;
+$border-btn: #000;
+$divider-color: #E7E5F2;
+
+//btn color
+$btn-profit: #24cca7;
+$btn-lose: #ff6596;
+
+// not active text
+$text-passive-toggle: #bdbdbd;
+$text-passive: #e0e0e0;
+
+// others colors
+$text-cansel: #4a56e2;
+$text-lose: #ff6596;
+$text-profit: #24cca7;
+
+// Ellipse
+$dark-ellipse: #c5baff;
+$light-ellipse: #ffd8d0;
+
+// Categories
+$base-lose: #fed057;
+$products: #ffd8d0;
+$car: #fd9498;
+$your-salfe: #c5baff;
+$kids: #6e78e8;
+$for-house: #4a56e2;
+$education: #81e1ff;
+$leisure: #24cca7;
+$others-lose: #00ad84;
+
+
+
+
+$main-font: 'Circe', sans-serif;
+$second-font: 'Poppins', sans-serif;
+
+$mobile: 320px;
+$tablet: 768px;
+$desktop: 1280px;
+
+$mobile-middle: 480px;
+$max-mobile: 767px;
+$min-tablet: 768px;
+$max-tablet: 1279px;
+$min-desktop: 1280px;
+
+
+.div {
+  border-radius: 30px;
+  text-align: center;
+  color: getColor('third-text-color');
+  background-color: getColor('fourth-text-color');
+  width: 100%;
+  border-spacing: 0px;
+  overflow: hidden;
+
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  background: $for-house;
+  color: $main-bg;
+
+  @media (max-width: $max-mobile) {
+    width: 280px;
+    height: 174px;
+  }
+  @media (min-width: $min-tablet) and (max-width: $max-tablet) {
+    width: 334px;
+    height: 174px;
+  }
+
+  @media (min-width: $min-desktop) {
+    width: 320px;
+    height: 320px;
+  }
+
+  &::before {
+    position: absolute;
+    content: '';
+    background-repeat: no-repeat;
+    background-size: 100%;
+
+    left: 0;
+    bottom: 0;
+
+    @media (max-width: $max-mobile) {
+      width: 280px;
+      height: 93px;
+    }
+    @media (min-width: $min-tablet) and (max-width: $max-tablet) {
+      width: 334px;
+      height: 111px;
+    }
+
+    @media (min-width: $min-desktop) {
+      width: 348px;
+      height: 134px;
+        }
+      }}
+
+.table {
+  border-spacing: 0px;
+  width: 100%;
+}
+
+.table th {
+  font-weight: 700;
+  font-size: 18px;
+  width: 300px;
+}
+
+.table th:first-child {
+  padding-left: 10px;
+}
+
+.table th:last-child {
+  padding-right: 10px;
+}
+
+.tbody td {
+  border: 2px solid #4a56e2;
+  line-height: 1.4;
+}
+
+.table td {
+  text-align: center;
+  
+}
+
+.thead {
+  background: rgba(255, 255, 255, 0.2);
+
+ }
+ .parents{
+  display: flex ;
+  flex-direction: column;
+ }

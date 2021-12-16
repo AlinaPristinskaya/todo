@@ -10,9 +10,10 @@ import Persons from './components/view/Persons';
 import Person from './components/view/Person';
 
 function App() {
-  return (
+  return (<>
+    
     <Container>
-      
+    <AppBar />
      
       <Routes>
         
@@ -23,8 +24,8 @@ function App() {
       <Route path="/tasks" exact  element={<Tasks/>} />
       
       </Routes>
-      <AppBar />
-    </Container>
+      
+    </Container></>
   )}
 
   

@@ -1,9 +1,9 @@
 import React from 'react';
 import Navigation from '../Navigation/Navigation';
-
+import './AppBar.scss';
 const AppBar = () => {
   return (
-    <header className="AppBar">
+    <header className="Appbar" >
       <Navigation />
     </header>
   );
