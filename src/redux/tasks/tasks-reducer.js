@@ -6,6 +6,8 @@ const entities=createReducer([],{
     [actions.fetchTaskSuccess]:(_,action)=>action.payload,
     [actions.addTaskSuccess]: (state, { payload }) => [...state, payload],
     [actions.deleteTaskSuccess]:(state,{payload})=>state.filter(({ id }) => id !== payload),
+    [actions.editTaskSuccess]: (state, { payload }) =>
+    state.map(task => (task.id === payload.id ? payload : task)),
 });
 const isLoading=createReducer(false,{
     [actions.fetchTaskRequest]:()=>true,
@@ -17,6 +19,9 @@ const isLoading=createReducer(false,{
   [actions.deleteTaskRequest]: () => true,
   [actions.deleteTaskSuccess]: () => false,
   [actions.deleteTaskError]: () => false,
+  [actions.editTaskRequest]: () => true,
+  [actions.editTaskSuccess]: () => false,
+  [actions.editTaskError]: () => false,
 })
 const error=createReducer(null,{
     [actions.fetchTaskError]:(_,action)=>action.payload,

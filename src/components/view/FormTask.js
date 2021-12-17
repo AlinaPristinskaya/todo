@@ -2,12 +2,11 @@
 import {useState} from 'react';
 import { connect } from 'react-redux';
 import  operations from '../../redux/tasks/tasks-operations';
-//import selectors from '../../redux/tasks/tasks-selectors';
 import {useSelector} from 'react-redux';
 import selectors from '../../redux/persons/persons-selectors';
-//import personsOperations from '../../redux/persons/persons-operations'
 
-function FormTask({onSubmit,name,onSubmitEdit}){
+
+function FormTask({onSubmit,name,taskId,onSubmitEdit}){
   const [title,setTitle]=useState('');
   const [description,setDescrintion]=useState('');
   const [personId,setPersonId]=useState('');
@@ -27,7 +26,6 @@ function FormTask({onSubmit,name,onSubmitEdit}){
   const handelChangePerson=(e)=>{
     const {value}=e.currentTarget;
     const personId=persons.find(person=>person.fio===value)
-    console.log(personId.id)
     setPersonId(personId.id)       
   }
     
@@ -35,7 +33,11 @@ function FormTask({onSubmit,name,onSubmitEdit}){
   
   const handelSubmit=e=>{
     e.preventDefault();
-    onSubmit({title,description,personId})
+    if(taskId){
+      onSubmitEdit(taskId,title,description,personId)
+      reset()
+    }
+    else onSubmit({title,description,personId})
     reset()
   }
 
@@ -64,6 +66,7 @@ function FormTask({onSubmit,name,onSubmitEdit}){
               name="name"
               maxlength="255"
               required
+              
         /></div>
         <div>
 
@@ -74,6 +77,7 @@ function FormTask({onSubmit,name,onSubmitEdit}){
               type="text"
               name="name"
               maxlength="255"
+              required
                             
         /></div>
         <div> {persons &&   <select
@@ -94,6 +98,10 @@ function FormTask({onSubmit,name,onSubmitEdit}){
   
   const mapDispatchToProps = dispatch => ({
     onSubmit:({title,description,personId})=>dispatch(operations.addTask({title,description,personId})),
+    onSubmitEdit:(taskId,title,description,personId)=>dispatch(operations.editTask(taskId,title,description,personId))
   });
  
   export default connect(null, mapDispatchToProps)(FormTask); 
+
+
+  

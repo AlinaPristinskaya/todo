@@ -34,7 +34,7 @@ function Task({onDeleteTask}){
     }
     {showModal && (
           <Modal onClose={toggleModal}>
-           <FormTask name={'Редактировать задачу'}/>
+           <FormTask name={'Редактировать задачу'} taskId={taskId}/>
           </Modal>)}
     </>)
 
