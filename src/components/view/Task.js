@@ -8,6 +8,7 @@ import Modal from '../Modal/Modal';
 import FormTask from './FormTask';
 function Task({onDeleteTask}){
     const {taskId}=useParams();
+
     const[task,setTask]=useState(null);
     const[showModal,setShowModal]=useState(false);
     
@@ -34,7 +35,7 @@ function Task({onDeleteTask}){
     }
     {showModal && (
           <Modal onClose={toggleModal}>
-           <FormTask name={'Редактировать задачу'} taskId={taskId}/>
+           <FormTask name={'Редактировать задачу'} task={task}/>
           </Modal>)}
     </>)
 

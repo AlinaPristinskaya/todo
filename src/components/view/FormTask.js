@@ -6,7 +6,7 @@ import {useSelector} from 'react-redux';
 import selectors from '../../redux/persons/persons-selectors';
 
 
-function FormTask({onSubmit,name,taskId,onSubmitEdit}){
+function FormTask({onSubmit,name,task,onSubmitEdit}){
   const [title,setTitle]=useState('');
   const [description,setDescrintion]=useState('');
   const [personId,setPersonId]=useState('');
@@ -25,6 +25,11 @@ function FormTask({onSubmit,name,taskId,onSubmitEdit}){
   }
   const handelChangePerson=(e)=>{
     const {value}=e.currentTarget;
+    if(value==='Выберите сотрудника'){
+      alert (`${name} is already on contacts`)
+      return
+    }
+    
     const personId=persons.find(person=>person.fio===value)
     setPersonId(personId.id)       
   }
@@ -33,8 +38,11 @@ function FormTask({onSubmit,name,taskId,onSubmitEdit}){
   
   const handelSubmit=e=>{
     e.preventDefault();
-    if(taskId){
-      onSubmitEdit(taskId,title,description,personId)
+    if(task){
+      onSubmitEdit(task.id,
+        title?title:task.title,
+        description?description:task.description,
+        personId?personId:task.personId)
       reset()
     }
     else onSubmit({title,description,personId})
@@ -65,7 +73,7 @@ function FormTask({onSubmit,name,taskId,onSubmitEdit}){
               type="text"
               name="name"
               maxlength="255"
-              required
+              required={!task}
               
         /></div>
         <div>
@@ -77,7 +85,7 @@ function FormTask({onSubmit,name,taskId,onSubmitEdit}){
               type="text"
               name="name"
               maxlength="255"
-              required
+              required={!task}
                             
         /></div>
         <div> {persons &&   <select
