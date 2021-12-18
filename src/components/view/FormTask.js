@@ -6,7 +6,7 @@ import {useSelector} from 'react-redux';
 import selectors from '../../redux/persons/persons-selectors';
 
 
-function FormTask({onSubmit,name,task,onSubmitEdit}){
+function FormTask({onSubmit,name,task,onSubmitEdit,onClose}){
   const [title,setTitle]=useState('');
   const [description,setDescrintion]=useState('');
   const [personId,setPersonId]=useState('');
@@ -25,11 +25,6 @@ function FormTask({onSubmit,name,task,onSubmitEdit}){
   }
   const handelChangePerson=(e)=>{
     const {value}=e.currentTarget;
-    if(value==='Выберите сотрудника'){
-      alert (`${name} is already on contacts`)
-      return
-    }
-    
     const personId=persons.find(person=>person.fio===value)
     setPersonId(personId.id)       
   }
@@ -43,10 +38,12 @@ function FormTask({onSubmit,name,task,onSubmitEdit}){
         title?title:task.title,
         description?description:task.description,
         personId?personId:task.personId)
-      reset()
+      reset() 
+      onClose()
     }
     else onSubmit({title,description,personId})
     reset()
+    onClose()
   }
 
    const reset=()=>{

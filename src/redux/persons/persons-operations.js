@@ -35,8 +35,18 @@ const addPerson= ({fio,email}) =>async dispatch => {
           .then(() => dispatch(personsActions.deletePersonSuccess(PersonId)))
           .catch(error => dispatch(personsActions.deletePersonError(error)));
       };
-    
 
 
-const operations={fetchPersons,addPerson,deletePerson}
+      const editPerson = (id,fio,email) => dispatch => {
+        const person = {id,fio,email};
+        dispatch(personsActions.editPersonRequest());
+      
+        axios
+          .patch(`http://localhost:3002/persons/${id}`,person)
+          .then(({ data }) => dispatch(personsActions.editPersonSuccess(data)))
+          .catch(error => dispatch(personsActions.editPersonError(error.message)));
+      }; 
+
+
+const operations={fetchPersons,addPerson,deletePerson,editPerson}
 export default operations

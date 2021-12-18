@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import  operations from '../../redux/persons/persons-operations';
 
 
-function FormPerson({onSubmit,name,onSubmitEdit}){
+function FormPerson({onSubmit,name,onSubmitEdit,person,onClose}){
   const [fio,setFio]=useState('');
   const [email,setEmail]=useState('');
   
@@ -21,10 +21,17 @@ function FormPerson({onSubmit,name,onSubmitEdit}){
    
   const handelSubmit=e=>{
     e.preventDefault();
-    onSubmit({fio,email})
+    if(person){
+      onSubmitEdit(person.id,
+        fio?fio:person.fio,
+        email?email:person.email)
+      reset()
+      onClose()
+    }
+   else onSubmit({fio,email})
     reset()
+    onClose()
   }
-
    const reset=()=>{
       setFio('');
       setEmail('');
@@ -39,6 +46,7 @@ function FormPerson({onSubmit,name,onSubmitEdit}){
     }
     return error;
   }
+  
   return (<>
     
   
@@ -53,7 +61,7 @@ function FormPerson({onSubmit,name,onSubmitEdit}){
               type="text"
               name="name"
               maxlength="255"
-              required
+              required={!person}
 
         /></div>
         <div>
@@ -64,7 +72,7 @@ function FormPerson({onSubmit,name,onSubmitEdit}){
               value={email}
               type="text"
              pattern='^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$'
-             required
+             required={!person}
         /></div>
         
        <button type="submit">Добавить</button>
@@ -72,9 +80,11 @@ function FormPerson({onSubmit,name,onSubmitEdit}){
 
 </>
 );}
+
   
   const mapDispatchToProps = dispatch => ({
     onSubmit:({fio,email})=>dispatch(operations.addPerson({fio,email})),
+    onSubmitEdit:(id,fio,email)=>dispatch(operations.editPerson(id,fio,email))
   });
  
   export default connect(null, mapDispatchToProps)(FormPerson); 

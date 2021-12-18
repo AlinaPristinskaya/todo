@@ -36,9 +36,6 @@ const addTask= ({title,description,personId}) =>async dispatch => {
       description:description,
       personId:personId,
     };
-    
-    
-
     dispatch(tasksActions.editTaskRequest());
   
     axios

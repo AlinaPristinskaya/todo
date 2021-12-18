@@ -37,7 +37,7 @@ function Person({onDeletePerson}){
       <IconButton onClick={toggleModal} name={'Редактировать'}/></div>
       {showModal && (
           <Modal onClose={toggleModal}>
-           <FormPerson name={'Редактировать данные сотрудника'}/>
+           <FormPerson name={'Редактировать данные сотрудника'} person={person} onClose={toggleModal}/>
           </Modal>)}
       
       </>)

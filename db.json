@@ -1,76 +1,51 @@
 {
   "persons": [
     {
-      "id": "fa6b3ded-6aed-4c04-b1e1-6c820e3c2848",
-      "fio": "ddddddd",
-      "email": "fdvdfgv@gmail.com"
+      "id": "b5c128d0-bffd-4ac6-82d3-84717f8bfeba",
+      "fio": "Алина",
+      "email": "afcszdcv@fdvx.vd"
     },
     {
-      "id": "b5c128d0-bffd-4ac6-82d3-84717f8bfeba",
-      "fio": "Alina",
-      "email": "afcszdcv@fdvx.vd"
+      "id": "96082dfc-509d-4857-a19a-3ce292ad7826",
+      "fio": "Fedor",
+      "email": "fedor@bjg.vk",
+      "name": "masa"
+    },
+    {
+      "id": "eb522daf-3ff0-421d-aad9-72972a1926ae",
+      "fio": "Василий",
+      "email": "dgdgdh@jkjk.co"
+    },
+    {
+      "id": "ece7c964-18d3-4220-a2be-66d76fa87027",
+      "fio": "Петро",
+      "email": "hbjbglj@hgbjh.ck"
     }
   ],
   "tasks": [
     {
       "id": "17d61cf2-7333-4a27-9a32-509a66e50813",
-      "title": "forest",
+      "title": "Купи слонв",
       "description": "впнвера",
-      "personId": ""
+      "personId": "b5c128d0-bffd-4ac6-82d3-84717f8bfeba"
     },
     {
       "id": "9482abce-d043-4e3f-a1b7-b76ebf399503",
       "title": "xfvx",
       "description": "Отредактированная задача",
-      "personId": "fa6b3ded-6aed-4c04-b1e1-6c820e3c2848"
+      "personId": "96082dfc-509d-4857-a19a-3ce292ad7826"
     },
     {
       "id": "4f561187-36b2-41fe-a001-e7495f1ab3c8",
       "title": "ddddddddd",
       "description": "fffffffffffffff",
-      "personId": "fa6b3ded-6aed-4c04-b1e1-6c820e3c2848"
+      "personId": "eb522daf-3ff0-421d-aad9-72972a1926ae"
     },
     {
-      "id": "4fdf2c45-1faa-4d22-9814-65b29ee70ad5",
-      "title": "dog",
-      "description": "forest",
-      "personId": "fa6b3ded-6aed-4c04-b1e1-6c820e3c2848"
-    },
-    {
-      "id": "e765c581-dd6b-4b63-8593-d2bd6817e678",
-      "title": "Alina",
-      "description": "fdgnvjdfkgdkfgh;dxfkghfn",
-      "personId": "fa6b3ded-6aed-4c04-b1e1-6c820e3c2848"
-    },
-    {
-      "id": "f9858c40-8795-495a-b988-ec059909ef24",
-      "title": "Alina",
-      "description": "efedfwsfws",
-      "personId": ""
-    },
-    {
-      "id": "924564e6-1c77-4227-a3ff-098dd7002c67",
-      "title": "Alina",
-      "description": "неврвпчр",
-      "personId": ""
-    },
-    {
-      "id": "9113cfc1-969a-4210-8e44-f6d16e14240d",
-      "title": "tyttgh",
-      "description": "проарсь",
-      "personId": ""
-    },
-    {
-      "id": "b78bddba-fba7-4aa4-ad8a-4e2df7942039",
-      "title": "forest",
-      "description": "Alina",
-      "personId": "fa6b3ded-6aed-4c04-b1e1-6c820e3c2848"
-    },
-    {
-      "id": "4b48f785-e1cd-4a70-aadb-1fbcc8650986",
-      "title": "dog",
-      "description": "dog",
-      "personId": "fa6b3ded-6aed-4c04-b1e1-6c820e3c2848"
+      "id": "172aed8f-b26d-4d88-aae9-517971faa1eb",
+      "title": "dshgvsijd",
+      "description": "sdiojos;idjsko'",
+      "personId": "ece7c964-18d3-4220-a2be-66d76fa87027"
     }
   ]
 }

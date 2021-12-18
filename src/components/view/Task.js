@@ -11,6 +11,9 @@ function Task({onDeleteTask}){
 
     const[task,setTask]=useState(null);
     const[showModal,setShowModal]=useState(false);
+    /* const[title,setTitle]=useState('')
+    const[description,setDescription]=useState('') */
+    
     
 
     useEffect(()=>{
@@ -21,21 +24,23 @@ function Task({onDeleteTask}){
     const toggleModal = () => {
       setShowModal(!showModal)
   };
-    return(<>
-    {task && (<div>
+    return(<><div>
+    {task && <div>
     <h2>{task.title}</h2>
     <p>{task.description}</p>
-    
+     </div>
+     }
+     <hr/>
     <button type="button"  onClick={() => onDeleteTask(taskId)}>
       Удалить задачу
     </button>
-    <IconButton onClick={toggleModal} name={'Редактировать'}/>
-    </div>)
+    <IconButton onClick={toggleModal} name={'Редактировать'}/></div>
+   
 
-    }
+    
     {showModal && (
           <Modal onClose={toggleModal}>
-           <FormTask name={'Редактировать задачу'} task={task}/>
+           <FormTask name={'Редактировать задачу'} task={task} onClose={toggleModal}/>
           </Modal>)}
     </>)
 

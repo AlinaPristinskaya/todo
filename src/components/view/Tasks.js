@@ -29,7 +29,7 @@ export default function Tasks(){
      if(fio){
        return fio.fio
      }
-     else return  'Исполнитель'
+     else return  ''
 
      }
      
@@ -62,7 +62,7 @@ export default function Tasks(){
   </div>
   {showModal && (
           <Modal onClose={toggleModal}>
-           <FormTask name={'Добавить задачу'}/>
+           <FormTask name={'Добавить задачу' } onClose={toggleModal}/>
           </Modal>)}
     </>
     )

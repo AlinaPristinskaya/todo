@@ -55,7 +55,7 @@ export default function Persons(){
     </div>
   {showModal && (
           <Modal onClose={toggleModal}>
-           <FormPerson name={'Добавить сотрудника'}/>
+           <FormPerson name={'Добавить сотрудника'} onClose={toggleModal}/>
           </Modal>)}
     </>)
 
