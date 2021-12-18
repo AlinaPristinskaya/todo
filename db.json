@@ -2,45 +2,44 @@
   "persons": [
     {
       "id": "b5c128d0-bffd-4ac6-82d3-84717f8bfeba",
-      "fio": "Alinochka",
+      "fio": "Алина Пристинская",
       "email": "afcszdcv@fdvx.vd"
     },
     {
-      "id": "96082dfc-509d-4857-a19a-3ce292ad7826",
-      "fio": "Kolya",
-      "email": "fedor@bjg.vk",
-      "name": "masa"
+      "id": "d64d062f-3ab3-4022-b1ef-18d431ec1707",
+      "fio": "Дарья Казанцева",
+      "email": "dfgdfg@dsfsf.vfvd"
     },
     {
-      "id": "d64d062f-3ab3-4022-b1ef-18d431ec1707",
-      "fio": "Dash",
-      "email": "dfdfsd@kllk.ck"
+      "id": "361b6ad6-986b-4aa2-9f62-ebb997a04104",
+      "fio": "Малышев Игорь",
+      "email": "igor@gmail.com"
     }
   ],
   "tasks": [
     {
       "id": "17d61cf2-7333-4a27-9a32-509a66e50813",
-      "title": "Купи слонв",
-      "description": "впнвера",
+      "title": "Заключить договор на закупку насоса",
+      "description": "срок поставки не позже 25.12.2021",
       "personId": "b5c128d0-bffd-4ac6-82d3-84717f8bfeba"
     },
     {
       "id": "9482abce-d043-4e3f-a1b7-b76ebf399503",
       "title": "forest",
       "description": "Отредактированная задача",
-      "personId": "96082dfc-509d-4857-a19a-3ce292ad7826"
+      "personId": "d64d062f-3ab3-4022-b1ef-18d431ec1707"
     },
     {
       "id": "ac4dadd6-8f0f-4220-be8f-4015463044f2",
-      "title": "dog",
-      "description": "srthstydhtdyh",
+      "title": "Отчет по продажам за декабрь",
+      "description": "Срок сдачи 21.12.2021",
       "personId": "b5c128d0-bffd-4ac6-82d3-84717f8bfeba"
     },
     {
-      "id": "41224a19-a767-4e9d-aebb-8eaa110d78d6",
-      "title": "dfgd",
-      "description": "tyttgh",
-      "personId": "d64d062f-3ab3-4022-b1ef-18d431ec1707"
+      "id": "8fb45478-1657-4b1d-884b-2759b53590b7",
+      "title": "Квартальный отчет",
+      "description": "срок сдачи 25.01.2022",
+      "personId": "361b6ad6-986b-4aa2-9f62-ebb997a04104"
     }
   ]
 }

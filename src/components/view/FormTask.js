@@ -3,7 +3,8 @@ import {useState} from 'react';
 import { connect } from 'react-redux';
 import  operations from '../../redux/tasks/tasks-operations';
 import {useSelector} from 'react-redux';
-import selectors from '../../redux/persons/persons-selectors';
+import selectorsPersons from '../../redux/persons/persons-selectors';
+//import selectorsTasks from '../../redux/tasks/tasks-selectors';
 
 
 function FormTask({onSubmit,name,task,onSubmitEdit,onClose}){
@@ -11,8 +12,8 @@ function FormTask({onSubmit,name,task,onSubmitEdit,onClose}){
   const [description,setDescrintion]=useState('');
   const [personId,setPersonId]=useState('');
 
-  const persons=useSelector(selectors.getPersons) 
-
+  const persons=useSelector(selectorsPersons.getPersons) 
+  
   const handelChangeTitle=(event)=>{
     const {value}=event.currentTarget;  
     setTitle(value);
@@ -25,8 +26,9 @@ function FormTask({onSubmit,name,task,onSubmitEdit,onClose}){
   }
   const handelChangePerson=(e)=>{
     const {value}=e.currentTarget;
+    if(value!=='Выберите сотрудника'){
     const personId=persons.find(person=>person.fio===value)
-    setPersonId(personId.id)       
+    setPersonId(personId.id) }      
   }
     
 
@@ -69,7 +71,7 @@ function FormTask({onSubmit,name,task,onSubmitEdit,onClose}){
               value={title}
               type="text"
               name="name"
-              maxlength="255"
+              maxLength="255"
               required={!task}
               
         /></div>
@@ -81,16 +83,16 @@ function FormTask({onSubmit,name,task,onSubmitEdit,onClose}){
               value={description}
               type="text"
               name="name"
-              maxlength="255"
+              maxLength="255"
               required={!task}
                             
         /></div>
         <div> {persons &&   <select
-            defaultValue={'Выбрать сотрудника'}
-            name="Selected"
+            defaultValue={'Выберите сотрудника'}
+            name="Select"
             onChange={handelChangePerson}>{personsArr.map(person=>(      
     
-              <option selected={person}>{person}</option>))
+              <option key={person}>{person}</option>))
            
            } </select>
                

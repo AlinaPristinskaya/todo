@@ -18,7 +18,7 @@ export default function Persons(){
     
   const taskTitle=(personId)=>{
      const titles=tasks.filter(task=>task.personId===personId)
-     return titles.map(dd=>(<ul><li>{dd.title}</li></ul>))
+     return titles.map(dd=>(<ul><li key={dd.id}>{dd.title}</li></ul>))
 
    }
 

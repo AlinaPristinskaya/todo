@@ -60,7 +60,7 @@ function FormPerson({onSubmit,name,onSubmitEdit,person,onClose}){
               value={fio}
               type="text"
               name="name"
-              maxlength="255"
+              maxLength="255"
               required={!person}
 
         /></div>
