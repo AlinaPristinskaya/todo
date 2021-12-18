@@ -1,38 +1,37 @@
-import{useState,useEffect} from 'react';
+import{useState} from 'react';
 import {useParams} from 'react-router-dom'
-import * as tasksShelfApi from '../../services/dbApi'
 import { connect } from 'react-redux';
 import operations from '../../redux/tasks/tasks-operations'
 import IconButton from '../IconButton/iconButton';
 import Modal from '../Modal/Modal';
 import FormTask from './FormTask';
+import {useSelector} from 'react-redux'
+import selectors from '../../redux/tasks/tasks-selectors';
+import { Link} from "react-router-dom"
+
+
 function Task({onDeleteTask}){
     const {taskId}=useParams();
-
-    const[task,setTask]=useState(null);
     const[showModal,setShowModal]=useState(false);
-    /* const[title,setTitle]=useState('')
-    const[description,setDescription]=useState('') */
-    
-    
 
-    useEffect(()=>{
-        tasksShelfApi.fetchTaskById(taskId).then(setTask)
-
-    },[taskId])
-
+    const tasks=useSelector(selectors.getTasks)
+    const task= tasks.find(task=>task.id===taskId) 
+  
     const toggleModal = () => {
+    
       setShowModal(!showModal)
   };
-    return(<><div>
-    {task && <div>
+
+      return(<><div>
+    {task&& <div>
     <h2>{task.title}</h2>
     <p>{task.description}</p>
      </div>
      }
      <hr/>
-    <button type="button"  onClick={() => onDeleteTask(taskId)}>
-      Удалить задачу
+    <button type="button"  onClick={() => onDeleteTask(taskId)} ><Link to='/tasks'>
+    Удалить задачу
+    </Link>      
     </button>
     <IconButton onClick={toggleModal} name={'Редактировать'}/></div>
    

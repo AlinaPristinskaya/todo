@@ -1,22 +1,22 @@
-import{useState,useEffect} from 'react';
+import{useState} from 'react';
 import { connect } from 'react-redux';
 import {useParams} from 'react-router-dom';
-import * as tasksShelfApi from '../../services/dbApi';
+//import * as tasksShelfApi from '../../services/dbApi';
 import operations from '../../redux/persons/persons-operations';
 import IconButton from '../IconButton/iconButton';
 import Modal from '../Modal/Modal';
 import FormPerson from './FormPerson';
+import { Link} from "react-router-dom";
+import selectors from '../../redux/persons/persons-selectors';
+import {useSelector} from 'react-redux'
 
 function Person({onDeletePerson}){
     const {personId}=useParams();
-    const[person,setPerson]=useState(null);
     const[showModal,setShowModal]=useState(false);
-   
 
-    useEffect(()=>{
-        tasksShelfApi.fetchPersonById(personId).then(setPerson)
-        
-    },[personId])
+    const persons=useSelector(selectors.getPersons)
+    const person= persons.find(person=>person.id===personId) 
+  
     const toggleModal = () => {
       setShowModal(!showModal)
   };
@@ -31,8 +31,8 @@ function Person({onDeletePerson}){
       </div>
       </>}
       <hr/>
-      <button type="button"  onClick={() => onDeletePerson(personId)}>
-        Удалить сотрудника
+      <button type="button"  onClick={() => onDeletePerson(personId)}><Link to='/persons'>
+        Удалить сотрудника</Link>
       </button>
       <IconButton onClick={toggleModal} name={'Редактировать'}/></div>
       {showModal && (

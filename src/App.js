@@ -17,11 +17,11 @@ function App() {
      
       <Routes>
         
-      <Route path="/" exact element={<HomeView />} />
+      <Route path="/"element={<HomeView />} />
       <Route path="/persons/:personId" element={<Person/>} />
-      <Route path="/persons" exact  element={<Persons/>} />
+      <Route path="/persons"element={<Persons/>} />
       <Route path="/tasks/:taskId" element={<Task/>} />
-      <Route path="/tasks" exact  element={<Tasks/>} />
+      <Route path="/tasks" element={<Tasks/>} />
       
       </Routes>
       

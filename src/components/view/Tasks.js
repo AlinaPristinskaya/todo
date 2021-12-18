@@ -36,11 +36,8 @@ export default function Tasks(){
 
    
     return (
-         <><div >
-           <div >
-    
-    <table className='table'>
-            <thead className='thead'>
+         <><div ><div >    
+         <table className='table'><thead className='thead'>
               <tr>
                 <th className='th'>Задача</th>
                 <th className='th'>Описание</th>
@@ -48,13 +45,13 @@ export default function Tasks(){
               </tr>
             </thead>
             <tbody>
-              {tasks.map(({title,description,personId,id}) => (
+               {tasks.map(({title,description,personId,id}) => (    
                 <tr key={id}>
                   <td className='td'>{ <Link to={`/tasks/${id}`}>{title}</Link>}</td>
                   <td className='td'>{description}</td>
                   <td className='td'>{personFio(personId)}</td>
                 </tr>
-              ))}
+                ))}
             </tbody>
           </table> </div>
     <IconButton onClick={toggleModal} name={'Добавить задачу'}/>
